@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- <link rel="icon" type="image/gif" href="animated_favicon1.gif"> -->
+
+    <style>
+
+        body {
+        font-family: 'Gloria Hallelujah', 'Montserrat', 'Arial', 'sans-serif',  'serif';
+        line-height: 1.8;
+        }
+
+
+        #chat {
+        width: 340px;
+        height:499px;
+        background-color: white;
+        max-width:100%;
+        max-height:70%;
+        border-radius: 15px;
+        border: 2px solid grey;
+        padding: 15px; 
+        overflow-y: auto;
+        position: relative;
+        }
+
+        div.frmabs {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 420px;
+        }
+
+        #inpfld {
+        padding-left: 15px;
+        }
+
+        #messages li {
+            background: rgb(240, 240, 240);
+        }
+
+        #messages li:nth-child(odd) {
+        background: lightcyan;
+        text-align:right;
+        color: blue;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="chat">
+        <ul id="messages">
+            <li class="mt-1" v-for="message in messages"> {{message}} </li>
+        </ul>
+
+        <div class="frmabs">
+        <form  v-on:submit.prevent="send">
+            <input class="ml-4" type="text" v-model="message">
+            <button class="btn-sm btn-primary">Send</button>
+        </form>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+
+
+    <script type="text/javascript">
+
+        var socket = io();
+
+        new Vue({
+            el: '#chat',
+
+            data: {
+                messages: [],
+                message: '',
+            },
+                mounted: function() {
+                   socket.on('chat.message', function(message) {
+                       console.log('message client send ...');
+                       this.messages.push(message);
+                    }.bind(this));
+            },
+
+            methods: {
+                send: function() {
+                    socket.emit('chat.message', this.message);
+                    this.message = '';
+                }
+            }
+        });
+    </script>
+
+
+</body>
+</html>

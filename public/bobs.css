@@ -1,0 +1,124 @@
+
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Gloria Hallelujah', 'Montserrat', 'Arial', 'sans-serif',  'serif';
+font-weight: bolder;
+background-color: white; 
+background-image: url(bg_image.jpg);
+background-repeat: cover;
+line-height: 1.8;
+/* margin-left: 10rem; */
+}
+
+h3, h5 {
+  color: white;
+  text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
+  /* font-size: 55px; */
+}
+
+.container-fluid, #register {
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(203,208,207,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+#how1, #how2, #abouttext {
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+.navbar-header, .navbar-brand {
+  font-size: 25px;
+}
+
+.title {
+  font-size: 16px;
+}
+
+a {
+  color: white;
+}
+
+#carousel_img {
+  width: 205px;
+  height: 205px;
+}
+
+
+#play {
+  width: 200px;
+  height: 252px;
+}
+
+#play {
+  transition: transform 1.5s;
+}
+
+#play:hover{
+  transform: rotate(360deg);
+}
+
+#img2, #img3 {
+  width: 200px;
+  height: 200px;
+}
+
+#img4 {
+  width: 400px;
+  height: 200px;
+}
+
+canvas {
+  border: 3px solid lightblue;
+  cursor:crosshair;
+}
+
+#drawing-pad, #sketch-holder {
+  background-color: white;
+}
+
+#chatdiv{
+  background-color: rgb(135, 175, 250);
+}
+
+#sketch-holder {
+  background-color: lightskyblue;
+}
+
+#slider {
+  background-color: rgb(135, 175, 250);
+}
+
+/* #register, #register2, #how1, #how2, #abouttext {
+  background-color:  #9FEDD7;
+} */
+
+/* #app {
+  background-color: rgb(215, 245, 140);
+} */
+
+.ml4 {
+  position: relative;
+  font-weight: 900;
+  font-size: 2.5em;
+}
+
+.ml4 .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0.3em;
+  right: 0;
+  opacity: 0; 
+}
+
+#lett_anim {
+  color: rgb(27, 245, 245);
+}
+
